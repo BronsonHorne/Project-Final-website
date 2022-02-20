@@ -1,0 +1,93 @@
+* {
+  font-family: serif;
+  box-sizing: border-box;
+  /* make the font family united sarif*/
+}
+div {
+  display: block;
+}
+h1 {
+  font-size: 4rem;
+  font-weight: 800;
+}
+.hero h1 {
+  color: rgb(0,63,162);
+  margin: 0;
+}
+p {
+  margin: 0 0 1em;
+}
+.hero p{
+  color: white;
+  font-size: 1.5rem;
+}
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.hero {
+  position: relative;
+}
+.hero .overlay {
+  background: linear-gradient(to bottom, rgba(0,0,0,.5),transparent 80%);
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.hero .text-wrapper {
+  position: absolute;
+  top: 60%;
+  text-align: center;
+  width: 100%;
+  padding: 0 1rem;
+}
+.cards {
+  display: flex;
+  gap: 2rem; 
+  margin: 12rem 1.5rem 0 1.5rem;
+}
+.card {
+  position: relative;
+}
+a {
+  cursor: pointer;
+}
+.card .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+
+  transition: opacity 300ms ease;
+}
+.cards .overlay p {
+  margin: 0;
+  padding: 0.5rem;
+  color: gray;
+  font-size: 2rem;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+.card:hover .overlay {
+  opacity: 1;
+}
+
+.cards .overlay span {
+  display: block;
+  text-align: center;
+  font-size: 3rem;
+}
+
+.cards .overlay:hover {
+  opacity: 1;
+}
