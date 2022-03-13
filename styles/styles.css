@@ -3,19 +3,81 @@
   box-sizing: border-box;
   /* make the font family united sarif*/
 }
+body{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 div {
   display: block;
+}
+nav{
+  align-self: stretch;
+  background-color: blue;
+}
+nav a {
+  color: #fff;
+  padding: 1rem;
+}
+aside p {
+  margin: 0;
+  text-align: center;
+}
+nav ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 0;
 }
 h1 {
   font-size: 4rem;
   font-weight: 800;
 }
+p {
+  margin: 0 0 1em;
+}
+
+nav li a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  
+  /* margin will keep the underlines from merging together if spacing is tight */
+  margin: 0 .5rem;
+  /* the padding determines how far the border is below the content*/
+  padding: 1rem;
+  font-size: 1.75rem;
+  white-space: nowrap;
+  user-select: none;
+  
+/*   border: 1px solid blue; */
+}
+nav a::after {
+  content: "";
+  height: 3px;
+  background-color: white;
+  
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: scaleX(0);
+  
+  transition: transform 200ms ease;
+  transform-origin: right;
+}
+nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform 600ms ease;
+}
 .hero h1 {
   color: rgb(0,63,162);
   margin: 0;
-}
-p {
-  margin: 0 0 1em;
 }
 .hero p{
   color: white;
