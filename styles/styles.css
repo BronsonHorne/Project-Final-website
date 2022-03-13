@@ -28,7 +28,7 @@ nav ul {
   display: flex;
   justify-content: space-around;
   margin: 0;
-  padding: 0;
+  padding: .5rem;
   margin-bottom: 0;
 }
 h1 {
@@ -90,6 +90,7 @@ img {
 }
 .hero {
   position: relative;
+  align-self: stretch;
 }
 .hero .overlay {
   background: linear-gradient(to bottom, rgba(0,0,0,.5),transparent 80%);
@@ -101,20 +102,35 @@ img {
   left: 0;
   right: 0;
 }
-.hero .text-wrapper {
-  position: absolute;
-  top: 60%;
-  text-align: center;
-  width: 100%;
-  padding: 0 1rem;
+.hero .text-wrapper{
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
+.hero .tex-para{
+  /* border: 1px solid blue; */
+  display: flex;
+  justify-content: center;
+  
+  align-items: flex-end;
 }
+
 .cards {
   display: flex;
   gap: 2rem; 
+  flex-direction: column;
   margin: 12rem 1.5rem 0 1.5rem;
 }
 .card {
   position: relative;
+}
+.image-cards img
+{
+  height: 100%;
+  object-fit: cover;
+  
+  aspect-ratio: 4 / 3;
 }
 a {
   cursor: pointer;
@@ -153,7 +169,7 @@ a {
 .cards .overlay:hover {
   opacity: 1;
 }
-
+/* loader */
 .loader {
   display: inline-block;
   width: 80px;
@@ -170,11 +186,72 @@ a {
   border-color: #fff transparent #fff transparent;
   animation: loader 1.2s linear infinite;
 }
+/* panel Class */
+/**** mobile first styles ****/
+.panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.panel > .image-wrapper {
+  /* make sure the image is dispalyed first   */
+  order: -1;
+}
+
+/* I picked an arbitrary breakpoint for "wider than mobile" */
+@media (min-width: 600px) {
+  .panel {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  /* use flex-basis (third value in the flex property) to proportionally size the text and image   */
+  .panel > .text-content {
+    flex: 1 1 60%;
+  }
+
+  .panel > .image-wrapper {
+    flex: 1 1 40%;
+    /* reset the order from mobile view */
+    order: 0;
+  }
+
+  /* remove the default margin on the h2 so the text aligns with the top of the image  */
+  .panel h2 {
+    margin-top: 0;
+  }
+
+  /* display the flex-item with class left first  */
+  .panel .left {
+    order: -1;
+  }
+}
+
 @keyframes loader {
   0% {
     transform: rotate(0deg);
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+@media (min-width: 500px) {
+  .cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .cards {
+    flex: 1 1 40%; /* grow shrink basis */
+  }
+}
+
+@media (min-width: 900px) {
+  .cards {
+    flex-wrap: nowrap;
+  }
+
+  .cards {
+    flex: 1 1 20%;
   }
 }
