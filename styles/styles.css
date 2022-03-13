@@ -91,6 +91,7 @@ img {
 .hero {
   position: relative;
   align-self: stretch;
+  padding-bottom: 10%;
 }
 .hero .overlay {
   background: linear-gradient(to bottom, rgba(0,0,0,.5),transparent 80%);
@@ -168,6 +169,28 @@ a {
 
 .cards .overlay:hover {
   opacity: 1;
+}
+/* article */
+article {
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+/* aside */
+aside {
+  background-color: blue;
+  color: #fff;
+  font-size: 3rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  align-self: stretch;
+}
+
+aside p {
+  margin: 0;
+  text-align: center;
+  /* ???????   */
+  /*     width: 100%; */
 }
 /* loader */
 .loader {
