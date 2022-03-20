@@ -1,3 +1,12 @@
+:root {
+  --text-color: #333;
+  --floral-white: #ce9103;
+  --roman-silver: #2e4dd6;
+  --space-cadet: #1c254a;
+  --space-cadet-light: #5b63be;
+  --body-font: "Inter", sans-serif;
+  --heading-font: "Playfair Display", serif;
+}
 * {
   font-family: serif;
   box-sizing: border-box;
@@ -95,6 +104,7 @@ img {
 }
 .hero .overlay {
   background: linear-gradient(to bottom, rgba(0,0,0,.5),transparent 80%);
+  order: -1;
 }
 .overlay {
   position: absolute;
@@ -219,6 +229,207 @@ aside p {
 .panel > .image-wrapper {
   /* make sure the image is dispalyed first   */
   order: -1;
+}
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+
+
+  background-color: var(--space-cadet);
+
+  transform: translateX(-100vw);
+
+  transition: transform 400ms;
+}
+
+.menu-show nav {
+  transform: translateX(0);
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 80rem;
+}
+
+nav a {
+  display: block;
+  padding: 1rem;
+  font-size: 1.4rem;
+
+  color: var(--floral-white);
+}
+
+nav a:not([href]) {
+  color: var(--roman-silver);
+}
+
+
+nav a[href]:hover {
+  color: var(--space-cadet-light);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+/* menu */
+.main-menu .menu-icon {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  width: 60px;
+  height: 60px;
+  background-color: rgba(255, 255, 255, .6);
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.main-menu svg {
+  stroke: #000;
+  stroke-width: 4px;
+  stroke-linecap: round;
+  padding: 12px;
+}
+
+.main-menu svg line {
+  transform-origin: center;
+  transition: transform 200ms ease;
+}
+
+.main-menu svg line:first-child {
+  transform: translateY(8px);
+}
+
+.main-menu svg line:last-child {
+  transform: translateY(-8px);
+}
+
+.menu-show .menu-icon {
+  background-color: transparent;
+}
+
+.menu-show svg line {
+  stroke: var(--floral-white);
+  stroke-width: 5px;
+}
+
+.menu-show svg line:first-child {
+  transform: rotate(135deg);
+}
+
+.menu-show svg line:last-child {
+  transform: rotate(-135deg);
+}
+@media (min-width: 601px) {
+  .panel {
+    flex-direction: row;
+  }
+
+  .panel .text-wrapper {
+    flex: 1 1 60%;
+  }
+
+  .panel .image-wrapper {
+    flex: 1 1 40%;
+  }
+
+  .panel h2 {
+    margin-top: 0;
+  }
+  /* main menu */
+  .main-menu .menu-icon{
+    display: none;
+  }
+  /* copied nav */
+  nav {
+    position: static;
+    display: block;
+
+    background-color: transparent;
+    margin: 2rem 1.5rem 6rem;
+
+    transform: none; 
+    transition: none;
+  }
+  
+  nav ul {
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin: 0 auto;
+
+    max-width: 80rem;
+  }
+  
+  nav a {
+    display: block;
+    padding: 1rem;
+    font-size: 1.4rem;
+
+    color: var(--space-cadet);
+  }
+  
+  nav a:not([href]) {
+    color: var(--roman-silver);
+  }
+  
+  nav a::after {
+    content: "";
+    display: block;
+    width: calc(100% + 12px);
+    height: 3px;
+    margin-left: -6px;
+    margin-top: 6px;
+    background-color: var(--space-cadet-light);
+    transform: scale(0);
+    transition: transform 200ms ease-in, color 300ms ease-in;
+    transform-origin: right;
+  }
+  
+  nav a[href]:hover {
+    color: var(--space-cadet-light);
+  }
+  
+  nav a[href]:hover::after {
+    transform: scale(1);
+    transform-origin: left;
+
+    color: var(--space-cadet);
+  }
+}
+
+@media (min-width: 901px) {
+  .hero {
+    height: 80vh;
+  }
+  .hero img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .panel .text-wrapper {
+    flex: 1 1 50%;
+  }
+
+  .panel .image-wrapper {
+    flex: 1 1 50%;
+  }
+  
 }
 
 /* I picked an arbitrary breakpoint for "wider than mobile" */
