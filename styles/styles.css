@@ -181,6 +181,7 @@ a {
   margin: 0;
   padding: 0.5rem;
   color: gray;
+  mix-blend-mode: difference;
   font-size: 2rem;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
