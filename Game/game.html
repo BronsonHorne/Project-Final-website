@@ -1,0 +1,11 @@
+<div id="d" style="position:absolute">O</div>
+<script>
+d=document.getElementById("d")
+x=y=5
+window.addEventListener("mousemove",function(chase){
+x-=(chase.clientX<x?5:-5)
+y-=(chase.clientY<y?5:-5)
+d.style.left=x
+d.style.top=y
+})
+</script>
