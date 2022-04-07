@@ -21,7 +21,7 @@
   <div class="hero">
     <div class="video-background">
       <div class="video-foreground">
-        <iframe width="1600" height="900" src="https://www.youtube.com/embed/watch?v=4VcVD5kHdw8&list=PLuMtMrYr25Ue7bbpDN18mezprVDe3RaFl&index=1&t=11s&start=13&controls=0&autoplay=1&mute=1&loop=1" title="YouTube video player" frameborder="0" allow="loop; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loop allowfullscreen></iframe>
+        <div id="player"></div>
       </div>
     </div>
     <!-- <picture>
@@ -110,6 +110,48 @@
     document.querySelector(".main-menu").classList.toggle("menu-show");
       });
     });
+    // set these to change interval and video (no error checking yet)
+const startTime = 13;
+const endTime = 108; // may need to be adjusted....
+const videoID = "4VcVD5kHdw8";
+
+// load JS for API
+const tag = document.createElement("script");
+tag.src = "https://www.youtube.com/iframe_api";
+const firstScriptTag = document.getElementsByTagName("script")[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+let player;
+
+// when YT API iframe is ready, this is called
+function onYouTubeIframeAPIReady() {
+  // create the player
+  player = new YT.Player("player", {
+    height: "900",
+    width: "640",
+    videoId: videoID,
+    playerVars: {
+      playsinline: 1,
+      mute: 1,
+      autoplay: 1,
+      controls: 0
+    },
+    events: {
+      onReady: (event) => {
+        //start video when it is ready
+        event.target.playVideo();
+        // start looping
+        loop();
+      }
+    }
+  });
+}
+
+// move to start time, sets timer to start loop over at end time
+loop = () => {
+  player.seekTo(startTime, true);
+  setTimeout(loop, (endTime - startTime) * 1000);
+};
   </script>
 <script src="script/countDowns.js"></script>
 </body>

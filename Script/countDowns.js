@@ -10,10 +10,10 @@ document.querySelector(".card.football").addEventListener("mouseenter", () => {
   footballDays.innerText = dayDifference(8, 23);
 });
 document.querySelector(".card.march").addEventListener("mouseenter", () => {
-  marchDays.innerText = dayDifference(2, 15);
+  marchDays.innerText = dayDifference(2, 14);
 });
 document.querySelector(".card.summer").addEventListener("mouseenter", () => {
-  summerDays.innerText = dayDifference(2, 30);
+  summerDays.innerText = dayDifference(3, 21);
 });
 
 function dayDifference(month, day) {
