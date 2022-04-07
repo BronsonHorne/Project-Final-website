@@ -8,14 +8,13 @@
   --heading-font: "Playfair Display", serif;
 }
 * {
-  font-family: serif;
   box-sizing: border-box;
-  /* make the font family united sarif*/
 }
 body{
   display: flex;
   align-items: center;
   flex-direction: column;
+  font-family: 'Poppins', sans-serif;
 }
 div {
   display: block;
@@ -54,10 +53,7 @@ nav li a {
   text-decoration: none;
   cursor: pointer;
   position: relative;
-  
-  /* margin will keep the underlines from merging together if spacing is tight */
   margin: 0 .5rem;
-  /* the padding determines how far the border is below the content*/
   padding: 1rem;
   font-size: 1.75rem;
   white-space: nowrap;
@@ -157,8 +153,6 @@ img {
 {
   height: 100%;
   object-fit: cover;
-  
-  aspect-ratio: 4 / 3;
 }
 a {
   cursor: pointer;
@@ -217,8 +211,6 @@ aside {
 aside p {
   margin: 0;
   text-align: center;
-  /* ???????   */
-  /*     width: 100%; */
 }
 /* loader */
 .loader {
@@ -245,7 +237,6 @@ aside p {
 }
 
 .panel > .image-wrapper {
-  /* make sure the image is dispalyed first   */
   order: -1;
 }
 nav {
@@ -366,7 +357,39 @@ nav a[href]:hover {
     left: -100%;
   }
 }
-@media (min-width: 601px) {
+@media (min-width: 500px) {
+  .cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .cards {
+    flex: 1 1 40%;
+  }
+}
+@media (min-width: 600px) {
+  .panel {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .panel > .text-content {
+    flex: 1 1 60%;
+  }
+
+  .panel > .image-wrapper {
+    flex: 1 1 40%;
+    order: 0;
+  }
+
+  .panel h2 {
+    margin-top: 0;
+  }
+
+  .panel .left {
+    order: -1;
+  }
+
   .panel {
     flex-direction: row;
   }
@@ -444,7 +467,7 @@ nav a[href]:hover {
   }
 }
 
-@media (min-width: 901px) {
+@media (min-width: 900px) {
   .hero {
     height: 80vh;
   }
@@ -461,62 +484,7 @@ nav a[href]:hover {
     flex: 1 1 50%;
   }
   
-}
-
-/* I picked an arbitrary breakpoint for "wider than mobile" */
-@media (min-width: 600px) {
-  .panel {
-    flex-direction: row;
-    gap: 2rem;
-  }
-
-  /* use flex-basis (third value in the flex property) to proportionally size the text and image   */
-  .panel > .text-content {
-    flex: 1 1 60%;
-  }
-
-  .panel > .image-wrapper {
-    flex: 1 1 40%;
-    /* reset the order from mobile view */
-    order: 0;
-  }
-
-  /* remove the default margin on the h2 so the text aligns with the top of the image  */
-  .panel h2 {
-    margin-top: 0;
-  }
-
-  /* display the flex-item with class left first  */
-  .panel .left {
-    order: -1;
-  }
-}
-
-@keyframes loader {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@media (min-width: 500px) {
-  .cards {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .cards {
-    flex: 1 1 40%; /* grow shrink basis */
-  }
-}
-
-@media (min-width: 900px) {
-  .cards {
+  .card {
     flex-wrap: nowrap;
-  }
-
-  .cards {
-    flex: 1 1 20%;
   }
 }

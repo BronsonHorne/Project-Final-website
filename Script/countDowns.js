@@ -23,13 +23,10 @@ function dayDifference(month, day) {
   if (today.getMonth() == 2 && today.getDate() > 30) {
     date.setFullYear(date.getFullYear() + 1);
   }
-  // 2 / 15
-  //     month before current month OR same month and date is before today
   if (
     date.getMonth() < today.getMonth() ||
     (date.getMonth() === today.getMonth() && date.getDate < today.getDate())
   ) {
-    // add a year to date
     date.setFullYear(today.getFullYear() + 1);
   }
 
