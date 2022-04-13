@@ -11,14 +11,13 @@
     <link rel="stylesheet" href="../styles/styles.css">
     <title>Forms</title>
 </head>
-<body class="form">
-  <body class="home">
-    <div class="hero">
-      <div class="video-background">
-        <div class="video-foreground">
-          <iframe width="1600" height="900" src="https://www.youtube.com/embed/watch?v=4VcVD5kHdw8&list=PLuMtMrYr25Ue7bbpDN18mezprVDe3RaFl&index=1&t=11s&start=13&controls=0&autoplay=1&mute=1&loop=1" title="YouTube video player" frameborder="0" allow="loop; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loop allowfullscreen></iframe>
-        </div>
+<body class="form home">
+  <div class="hero">
+    <div class="video-background">
+      <div class="video-foreground">
+        <div id="player"></div>
       </div>
+    </div>
       <div class="overlay">
         <div class="text-wrapper text">
           <h1>BYU Intern Forms Page</h1>
@@ -44,66 +43,111 @@
       <img class="svg" src="../images/felis-catus-footsteps-track.svg" alt="SVG image of a cougar paw">
       
       <div class="form-container">
-      <h2>Survey</h2>
+        <h2>Survey</h2>
         <form name="submit-to-sheet">
-        <label for="name">Full name:</label>
+          <label for="name">Full name:</label>
 
-        <input type="text" name="name" id="name">
+          <input type="text" name="name" id="name">
 
-        <label for="email">Email address:</label>
-        <input type="email" name="email" id="email" required>
+          <label for="email">Email address:</label>
+          <input type="email" name="email" id="email" required>
 
-        <label for="phone">Phone number:</label>
-        <input type="tel" name="phone" id="phone">
+          <label for="phone">Phone number:</label>
+          <input type="tel" name="phone" id="phone">
 
-        <label for="month">Birthday:</label>
-        <input type="month" name="month" id="month">
+          <label for="month">Birthday:</label>
+          <input type="month" name="month" id="month">
 
-    <fieldset>
-      <legend>What sports do you like watching and would like to be apart of? <em>(Check all that apply)</em></legend>
+          <fieldset>
+            <legend>What sports do you like watching and would like to be apart of? <em>(Check all that apply)</em></legend>
 
-      <input type="checkbox" id="football" name="sports" value="football">
-      <label for="football">Football</label>
+            <input type="checkbox" id="football" name="sports" value="football">
+            <label for="football">Football</label>
 
-      <input type="checkbox" id="basketball" name="sports" value="basketball">
-      <label for="basketball">Basketball</label>
+            <input type="checkbox" id="basketball" name="sports" value="basketball">
+            <label for="basketball">Basketball</label>
 
-      <input type="checkbox" id="soccer" name="sports" value="soccer">
-      <label for="soccer">Soccer</label>
+            <input type="checkbox" id="soccer" name="sports" value="soccer">
+            <label for="soccer">Soccer</label>
 
-      <input type="checkbox" id="baseball" name="sports" value="baseball">
-      <label for="baseball">Baseball/Softball</label>
+            <input type="checkbox" id="baseball" name="sports" value="baseball">
+            <label for="baseball">Baseball/Softball</label>
 
-      <input type="checkbox" id="volleyball" name="sports" value="volleyball-claw">
-      <label for="volleyball">Volleyball</label>
+            <input type="checkbox" id="volleyball" name="sports" value="volleyball-claw">
+            <label for="volleyball">Volleyball</label>
 
-      <input type="checkbox" id="gymnastics" name="sports" value="gymnastics">
-      <label for="gymnastics">Gymnastics</label>
-    </fieldset>
+            <input type="checkbox" id="gymnastics" name="sports" value="gymnastics">
+            <label for="gymnastics">Gymnastics</label>
+          </fieldset>
 
-    <fieldset>
-      <legend>What year are your in school?</legend>
+          <fieldset>
+            <legend>What year are your in school?</legend>
 
-      <input type="radio" name="year" id="freshman" value="freshman">
-      <label for="freshman">Freshman</label>
+            <input type="radio" name="year" id="freshman" value="freshman">
+            <label for="freshman">Freshman</label>
 
-      <input type="radio" name="year" id="sophomore" value="sophomore">
-      <label for="sophomore">Sophomore</label>
+            <input type="radio" name="year" id="sophomore" value="sophomore">
+            <label for="sophomore">Sophomore</label>
 
-      <input type="radio" name="year" id="junior" value="junior">
-      <label for="junior">Junior</label>
+            <input type="radio" name="year" id="junior" value="junior">
+            <label for="junior">Junior</label>
 
-      <input type="radio" name="year" id="senior" value="senior">
-      <label for="senior">Senior</label>
-    </fieldset>
+            <input type="radio" name="year" id="senior" value="senior">
+            <label for="senior">Senior</label>
+          </fieldset>
 
-    <label for="comments">Write any comments or questions:</label>
-    <textarea name="comments" id="comments" rows="10" placeholder="Write any suggestions or questions you have"></textarea>
+          <label for="comments">Write any comments or questions:</label>
+          <textarea name="comments" id="comments" rows="10" placeholder="Write any suggestions or questions you have"></textarea>
 
-    <button>Submit Now</button>
+          <button>Submit Now</button>
 
-  </form>
-  </div>
+        </form>
+      </div>
+    </div>
+  <script>
+    // set these to change interval and video (no error checking yet)
+const startTime = 13;
+const endTime = 108; // may need to be adjusted....
+const videoID = "4VcVD5kHdw8";
 
+// load JS for API
+const tag = document.createElement("script");
+tag.src = "https://www.youtube.com/iframe_api";
+const firstScriptTag = document.getElementsByTagName("script")[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+let player;
+
+// when YT API iframe is ready, this is called
+function onYouTubeIframeAPIReady() {
+  // create the player
+  player = new YT.Player("player", {
+    height: "900",
+    width: "640",
+    videoId: videoID,
+    playerVars: {
+      playsinline: 1,
+      mute: 1,
+      autoplay: 1,
+      controls: 0
+    },
+    events: {
+      onReady: (event) => {
+        //start video when it is ready
+        event.target.playVideo();
+        // start looping
+        loop();
+      }
+    }
+  });
+}
+
+// move to start time, sets timer to start loop over at end time
+loop = () => {
+  player.seekTo(startTime, true);
+  setTimeout(loop, (endTime - startTime) * 1000);
+};
+  </script>
+    
 </body>
 </html>
