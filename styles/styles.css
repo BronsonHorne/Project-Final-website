@@ -51,6 +51,14 @@ p {
   margin: 0 0 1em;
 }
 
+article p{
+  margin-left: 10px;
+  font-size: 22px;
+}
+article h2{
+  margin-left: 50px;
+}
+
 nav li a {
   display: block;
   color: #fff;
