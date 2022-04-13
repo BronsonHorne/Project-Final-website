@@ -1,28 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Snake</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <canvas id="can" width="840" height="462"></canvas>
 
-<div id="d" style="position:absolute">O</div>
-<script>
-d=document.getElementById("d")
-x=y=5
-window.addEventListener("mousemove",function(chase){
-x-=(chase.clientX<x?5:-5);
-y-=(chase.clientY<y?5:-5);
-d.style.left=x
-d.style.top=y
-})
-</script>
-<style>
+    <script src="helper.js" defer></script>
+    <script src="snake.js" defer></script>
+    <script src="core.js" defer></script>
+</body>
+</html>
 
-</style>
-<!-- <div class="main-menu">
-    <div class="menu-icon">
-      <svg viewbox="0 0 60 60" width="40px" height="40px">
-        <line x1="5%" y1="50%" x2="95%" y2="50%" />
-        <line x1="5%" y1="50%" x2="95%" y2="50%" />
-      </svg>
-    </div>
-    <nav class="menu">
-      <ul>
-        <li><a href="../index.html">Home</a></li>
-      </ul>
-    </nav>
-  </div> -->
+<!-- Followed along Webship on youtube tutorial -->
