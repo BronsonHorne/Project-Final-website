@@ -123,7 +123,7 @@ function drawSnake() {
 
   snakeParts.push(new SnakePart(headX, headY)); //put an item at the end of the list next to the head
   while (snakeParts.length > tailLength) {
-    snakeParts.shift(); // remove the furthet item from the snake parts if have more than our tail size.
+    snakeParts.shift(); // remove the furthest item from the snake parts if have more than our tail size.
   }
 
   ctx.fillStyle = "orange";
