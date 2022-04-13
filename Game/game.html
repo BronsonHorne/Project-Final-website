@@ -3,18 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Snake</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        canvas{
+            box-shadow: black 20px 10px 50px;
+        }
+    </style>    
 </head>
-<body>
-    
-    <canvas id="can" width="840" height="462"></canvas>
 
-    <script src="helper.js" defer></script>
-    <script src="snake.js" defer></script>
-    <script src="core.js" defer></script>
+<body>
+    <h1>Snake</h1>
+    
+    <canvas id="game" width="400" height="400"/>
+    <script src="snake.js"></script>
 </body>
 </html>
-
-<!-- Followed along Webship on youtube tutorial -->
